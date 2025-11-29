@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>棱镜重工Wiki - 知识库</title>
+    <title>全恐症Wiki - 知识库</title>
     <!-- 引入Marked.js库用于解析Markdown -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!-- 引入Highlight.js用于代码高亮 -->
@@ -14,12 +14,14 @@
     <style>
         /* 基础样式 */
         :root {
-            --primary-color: #2c3e50;
+            --primary-color: #1a1a1a;
             --secondary-color: #3498db;
             --accent-color: #e74c3c;
-            --light-color: #ecf0f1;
-            --dark-color: #34495e;
-            --text-color: #333;
+            --light-color: #2c2c2c;
+            --dark-color: #121212;
+            --text-color: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --border-color: #333;
             --border-radius: 6px;
             --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
@@ -34,7 +36,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background-color: #f9f9f9;
+            background-color: var(--dark-color);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -45,7 +47,7 @@
             background-color: var(--primary-color);
             color: white;
             padding: 1rem 2rem;
-            box-shadow: var(--shadow);
+            box-shadow: var(--border-color);
         }
 
         .header-content {
@@ -75,9 +77,10 @@
         }
 
         nav a {
-            color: white;
+            color: var(--text-color);
             text-decoration: none;
             transition: color 0.3s;
+            font-weight: 500;
         }
 
             nav a:hover {
@@ -97,7 +100,7 @@
         /* 侧边栏样式 */
         .sidebar {
             width: 280px;
-            background-color: white;
+            background-color: var(--primary-color);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             padding: 1.5rem;
@@ -109,6 +112,7 @@
             top: 20px;
             /* 过渡效果 */
             transition: max-height 0.3s ease;
+            border: 1px solid var(--border-color);
         }
 
         .sidebar.expanded {
@@ -120,12 +124,13 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
         }
 
         .sidebar h3 {
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--secondary-color);
-            flex: 1;
+            color: var(--text-color);
+            font-size: 1.1rem;
         }
 
         .search-toggle {
@@ -157,9 +162,11 @@
             .search-box input {
                 width: 100%;
                 padding: 0.5rem 2.5rem 0.5rem 0.75rem;
-                border: 1px solid #ddd;
+                border: 1px solid var(--border-color);
                 border-radius: var(--border-radius);
                 font-size: 0.9rem;
+                background-color: var(--dark-color);
+                color: var(--text-color);
             }
 
                 .search-box input:focus {
@@ -173,7 +180,7 @@
             right: 0.75rem;
             top: 50%;
             transform: translateY(-50%);
-            color: #999;
+            color: var(--text-muted);
         }
 
         .search-results {
@@ -181,8 +188,8 @@
             top: 100%;
             left: 0;
             right: 0;
-            background: white;
-            border: 1px solid #ddd;
+            background: var(--primary-color);
+            border: 1px solid var(--border-color);
             border-radius: 0 0 var(--border-radius) var(--border-radius);
             box-shadow: var(--shadow);
             z-index: 10;
@@ -197,9 +204,9 @@
 
         .search-result-item {
             padding: 0.75rem;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--border-color);
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s
         }
 
             .search-result-item:hover {
@@ -213,20 +220,27 @@
         .search-result-title {
             font-weight: bold;
             margin-bottom: 0.25rem;
+            color: var(--text-color);
         }
 
         .search-result-excerpt {
-            font-size: 0.8rem;
-            color: #666;
+           font-size: 0.8rem;
+            color: var(--text-muted);
         }
 
         /* 页脚样式 */
         footer {
             background-color: var(--primary-color);
-            color: white;
+            color: var(--text-color);
             text-align: center;
             padding: 1.5rem;
             margin-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
         }
 
         /* 嵌套菜单样式 */
@@ -238,7 +252,7 @@
             cursor: pointer;
             padding: 0.5rem;
             font-weight: bold;
-            color: var(--dark-color);
+            color: var(--text-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -253,6 +267,7 @@
         .category-arrow {
             font-size: 0.8rem;
             transition: transform 0.3s;
+            color: var(--text-muted);
         }
 
         .category-header.expanded .category-arrow {
@@ -295,7 +310,7 @@
                     color: white;
                 }
         
-        /* 二级嵌套菜单样式 */
+       /* 二级嵌套菜单样式 */
         .subcategory {
             margin-left: 0.5rem;
         }
@@ -304,7 +319,7 @@
             cursor: pointer;
             padding: 0.4rem 0.5rem;
             font-weight: 600;
-            color: var(--dark-color);
+            color: var(--text-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -320,6 +335,7 @@
         .subcategory-arrow {
             font-size: 0.7rem;
             transition: transform 0.3s;
+            color: var(--text-muted);
         }
 
         .subcategory-header.expanded .subcategory-arrow {
@@ -371,7 +387,7 @@
             cursor: pointer;
             padding: 0.35rem 0.5rem;
             font-weight: 500;
-            color: var(--dark-color);
+            color: var(--text-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -387,6 +403,7 @@
         .subsubcategory-arrow {
             font-size: 0.65rem;
             transition: transform 0.3s;
+            color: var(--text-muted);
         }
 
         .subsubcategory-header.expanded .subsubcategory-arrow {
@@ -438,7 +455,7 @@
             cursor: pointer;
             padding: 0.3rem 0.5rem;
             font-weight: 500;
-            color: var(--dark-color);
+            color: var(--text-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -454,6 +471,7 @@
         .subsubsubcategory-arrow {
             font-size: 0.6rem;
             transition: transform 0.3s;
+            color: var(--text-muted);
         }
 
         .subsubsubcategory-header.expanded .subsubsubcategory-arrow {
@@ -496,39 +514,42 @@
                     color: white;
                 }
 
-
         /* 主内容区样式 */
         .main-content {
             flex: 1;
-            background-color: white;
+            background-color: var(--primary-color);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             padding: 2rem;
+            border: 1px solid var(--border-color);
         }
 
             .main-content h1 {
                 margin-bottom: 1.5rem;
-                color: var(--primary-color);
-                border-bottom: 2px solid var(--light-color);
+                color: var(--text-color);
+                border-bottom: 2px solid var(--border-color);
                 padding-bottom: 0.5rem;
             }
 
             .main-content h2 {
                 margin: 1.5rem 0 1rem;
-                color: var(--dark-color);
+                color: var(--text-color);
             }
 
             .main-content h3 {
                 margin: 1.2rem 0 0.8rem;
+                color: var(--text-color);
             }
 
             .main-content p {
                 margin-bottom: 1rem;
+                color: var(--text-color);
             }
 
             .main-content ul, .main-content ol {
                 margin-bottom: 1rem;
                 padding-left: 1.5rem;
+                color: var(--text-color);
             }
 
             .main-content li {
@@ -536,38 +557,44 @@
             }
 
             .main-content code {
-                background-color: var(--light-color);
+                background-color: var(--dark-color);
                 padding: 0.2rem 0.4rem;
                 border-radius: 3px;
                 font-family: 'Courier New', monospace;
+                color: #e0e0e0;
+                border: 1px solid var(--border-color);
             }
 
             .main-content pre {
-                background-color: #f6f8fa;
+                background-color: var(--dark-color);
                 padding: 1rem;
                 border-radius: var(--border-radius);
                 overflow-x: auto;
                 margin-bottom: 1rem;
-                border: 1px solid #e1e4e8;
+                border: 1px solid var(--border-color);
             }
 
                 .main-content pre code {
                     background: none;
                     padding: 0;
+                    border: none;
                 }
 
             .main-content blockquote {
                 border-left: 4px solid var(--secondary-color);
                 padding-left: 1rem;
                 margin: 1rem 0;
-                color: var(--dark-color);
+                color: var(--text-muted);
                 font-style: italic;
+                background-color: var(--light-color);
+                padding: 1rem;
+                border-radius: 0 var(--border-radius) var(--border-radius) 0;
             }
 
         .breadcrumb {
             margin-bottom: 1.5rem;
             font-size: 0.9rem;
-            color: var(--dark-color);
+            color: var(--text-muted);
         }
 
             .breadcrumb a {
@@ -579,11 +606,11 @@
         .loading {
             text-align: center;
             padding: 2rem;
-            color: var(--dark-color);
+            color: var(--text-muted);
         }
 
         .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
+            border: 4px solid rgba(255, 255, 255, 0.1);
             border-left-color: var(--secondary-color);
             border-radius: 50%;
             width: 40px;
@@ -600,12 +627,30 @@
 
         /* 错误状态样式 */
         .error {
-            background-color: #ffeaea;
-            border: 1px solid #ffcccc;
+            background-color: rgba(231, 76, 60, 0.1);
+            border: 1px solid var(--accent-color);
             border-radius: var(--border-radius);
             padding: 1.5rem;
             margin-bottom: 1rem;
-            color: #d63031;
+            color: var(--accent-color);
+        }
+
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--light-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--border-color);
         }
 
         /* 响应式设计 */
@@ -616,6 +661,12 @@
 
             .sidebar {
                 width: 100%;
+                max-height: none;
+                position: static;
+            }
+            
+            .sidebar.expanded {
+                max-height: none;
             }
 
             .header-content {
@@ -638,7 +689,7 @@
     <!-- 网站头部 -->
     <header>
         <div class="header-content">
-            <div class="logo">棱镜重工<span>Wiki</span></div>
+            <div class="logo">全恐症<span>Wiki</span></div>
             <nav>
                 <ul>
                     <li><a href="#" class="nav-link" data-doc="home">首页</a></li>
@@ -680,7 +731,7 @@
             </div>
 
             <!-- 页面标题 -->
-            <h1 id="page-title">欢迎使用棱镜重工Wiki</h1>
+            <h1 id="page-title">欢迎使用全恐症Wiki</h1>
 
             <!-- 内容区域 -->
             <div id="content">
@@ -697,7 +748,7 @@
     <footer>
         <div class="header-content" style="padding: 0.75rem 1rem;">
             <div style="width:100%; display:flex; justify-content:center; align-items:center; gap:0.5rem;">
-                <div style="font-size:0.95rem;">&copy; 2025 棱镜重工Wiki - 由 GitHub Pages 驱动 · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">本wiki遵循CC BY-SA-4.0许可证</a></div>
+                <div style="font-size:0.95rem;">&copy; 2025 全恐症Wiki - 由 GitHub Pages 驱动 · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">本wiki遵循CC BY-SA-4.0许可证</a></div>
             </div>
         </div>
     </footer>
@@ -716,34 +767,24 @@
                 { id: "about", title: "关于", file: "docs/about.md"},
                 
                 //角色分类
-                { id: "edward-riley", title: "爱德华·莱利", file: "docs/phi-role/Edward-Riley.md" },
-                { id: "talia-riley", title: "塔莉娅·莱利", file: "docs/phi-role/Talia-Riley.md" },
-                { id: "philythia-lanthes", title: "菲莉茜娅·兰瑟斯", file: "docs/phi-role/Philythia-Lanthes.md" },
+                
                 
                 // 故事分类
-                { id: "farewell-war", title: "永别了，战争", file: "docs/story/Farewell-War.md" },
-                { id: "polarized-light", title: "偏振光", file: "docs/story/polarized-light.md" },
-                { id: "danger-zone", title: "危险地带", file: "docs/story/Danger-Zone.md" },
-
-                //《永别了，战争》章节
-                { id: "farewell-war-chapter1", title: "第一章：赫尔辛基的阴影", file: "docs/story/farewell-war/chapter1.md" },
-                { id: "farewell-war-chapter2", title: "第二章：空痕与回响", file: "docs/story/farewell-war/chapter2.md" },
-                { id: "farewell-war-chapter3", title: "第三章：以太回响里的安魂曲", file: "docs/story/farewell-war/chapter3.md" },
-                { id: "farewell-war-chapter4", title: "第四章：雪原上的信标", file: "docs/story/farewell-war/chapter4.md" },
-                { id: "farewell-war-chapter5", title: "第五章：寂静的回声", file: "docs/story/farewell-war/chapter5.md" },
+                
                 
                 // 物品分类
-                { id: "nihilith", title: "莫伦晶", file: "docs/thing/Nihilith.md" },
-                { id: "Möbius-alloy", title: "莫比乌斯合金", file: "docs/thing/Möbius-alloy.md" },
-                { id: "aether-cloak", title: "以太披风", file: "docs/thing/Aether-Cloak.md" },
+                
 
                 // 世界观分类
                 //组织
-                { id: "phi-introduce", title: "棱镜重工", file: "docs/worldview/phi-introduce.md" },
+                { id: "omniphobia", title: "全恐症", file: "docs/worldview/OmniPhobia.md" },
                 { id: "sea-church-introduce", title: "深海教会", file: "docs/worldview/sea-church-introduce.md" },
-                { id: "Möbius-Legion-introduce", title: "莫比乌斯军团", file: "docs/worldview/Möbius-Legion-introduce.md" },
+                { id: "phi-introduce", title: "棱镜重工", file: "docs/worldview/phi-introduce.md" },
+                { id: "coffin", title: "残响之柩", file: "docs/worldview/coffin.md" },
+                { id: "bakugo", title: "噤貘教会", file: "docs/worldview/Bakugo.md" },
+
                 //概念
-                { id: "ees", title: "静滞病", file: "docs/worldview/EES.md"}
+                { id: "phobia", title: "恐惧症", file: "docs/worldview/Phobia.md"}
             ],
 
             // 默认文档
@@ -829,7 +870,7 @@
                      "faq": "常见问题"
                 },
                 "故事": {
-                    "主线故事": {
+                    "2025.11.29": {
                         "永别了，战争": {
                             "章节": {
                                 "farewell-war-chapter1": "第一章：赫尔辛基的阴影",
@@ -847,39 +888,41 @@
                                 "farewell-war-setting-location": "地点"
                             }
                         },
-                         "偏振光": {
+                         "未命名故事": {
                             "章节": {
-                            "polarized-light-chapter1": "第一章：光之始",
-                            "polarized-light-chapter2": "第二章：折射的命运",
+                            "polarized-light-chapter1": "第一章",
+                            "polarized-light-chapter2": "第二章",
                          }
                     }
                 },
-                    "支线故事": {
-                        "danger-zone": "危险地带"
+                    "2025": {
+                        "1": "未知故事"
                     }
                 },
                 "角色": {
-                    "主要角色": {
-                        "philythia-lanthes": "菲莉茜娅·兰瑟斯",
-                        "edward-riley": "爱德华·莱利"
+                    "2025.11.29": {
+                        "2": "未知角色",
+                        "3": "未知角色"
                     },
-                    "次要角色": {
-                        "talia-riley": "塔莉娅·莱利"
+                    "2025": {
+                        "4": "未知角色"
                     }
                 },
                 "物品": {
-                    "nihilith": "莫伦晶",
-                    "Möbius-alloy": "莫比乌斯合金",
-                    "aether-cloak": "以太披风"
+                    "5": "未知物品",
+                    "6": "未知物品",
+                    "7": "未知物品"
                 },
                 "世界观": {
                     "组织": {
+                        "omniphobia": "全恐症",
                         "phi-introduce": "棱镜重工",
-                        "sea-church-introduce": "深海教会",
-                        "Möbius-Legion-introduce": "莫比乌斯军团"
+                        "coffin": "残响之柩",
+                        "bakugo": "噤貘教会",
+                        "sea-church-introduce": "深海教会"
                     },
                     "概念": {
-                        "ees": "静滞病"
+                        "phobia": "恐惧症"
                     }
                 },
                 "开发与社区": {

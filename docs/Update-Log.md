@@ -1,4 +1,4 @@
-2025.11.29<br>[wiki](https://phi2025-prism.github.io/phi-wiki/#home)正式上线<br>14:56更新<br>
+2025.11.29<br>[wiki](https://phi2025-prism.github.io/omniphobia-wiki/#home)正式上线<br>14:56更新<br>
 1.添加了三级嵌套菜单的完整支持：
 
 ·新增了三级菜单的CSS样式（subsubcategory 相关类）<br>
@@ -78,5 +78,6 @@
 ·搜索功能<br>
 ·代码高亮<br>
 ·响应式设计
+
 
 

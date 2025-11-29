@@ -770,21 +770,31 @@
                 
                 
                 // 故事分类
-                
-                
+                - { id: "farewell-war-chapter", title: "开始阅读", file: "docs/story/farewell-war-chapter.md" },
+                - { id: "farewell-war-characters", title: "开始阅读", file: "docs/story/farewell-war-characters.md" },
+                - { id: "farewell-war-setting", title: "开始阅读", file: "docs/story/farewell-war-setting.md" },
+                - { id: "polarized-light", title: "未命名故事", file: "docs/story/Polarized-Light.md" },
+
                 // 物品分类
                 
 
                 // 世界观分类
                 //组织
-                { id: "omniphobia", title: "全恐症", file: "docs/worldview/OmniPhobia.md" },
-                { id: "sea-church-introduce", title: "深海教会", file: "docs/worldview/sea-church-introduce.md" },
-                { id: "phi-introduce", title: "棱镜重工", file: "docs/worldview/phi-introduce.md" },
-                { id: "coffin", title: "残响之柩", file: "docs/worldview/coffin.md" },
-                { id: "bakugo", title: "噤貘教会", file: "docs/worldview/Bakugo.md" },
+                { id: "omniphobia", title: "全恐症", file: "docs/worldview/organize/OmniPhobia.md" },
+                { id: "sea-church-introduce", title: "深海教会", file: "docs/worldview/organize/sea-church-introduce.md" },
+                { id: "phi-introduce", title: "棱镜重工", file: "docs/worldview/organize/phi-introduce.md" },
+                { id: "coffin", title: "残响之柩", file: "docs/worldview/organize/coffin.md" },
+                { id: "bakugo", title: "噤貘教会", file: "docs/worldview/organize/Bakugo.md" },
 
                 //概念
-                { id: "phobia", title: "恐惧症", file: "docs/worldview/Phobia.md"}
+                { id: "phobia", title: "恐惧症", file: "docs/worldview/Phobia-introduce.md"},
+                //恐惧症
+                { id: "severe-phobia", title: "重恐症", file: "docs/worldview/phobia/Severe-Phobia.md"},
+                { id: "op-22", title: "OP-22 深海恐惧症", file: "docs/worldview/phobia/OP-22.md"},
+                { id: "op-23", title: "OP-23 瘟疫恐惧症", file: "docs/worldview/phobia/OP-23.md"},
+                { id: "op-77", title: "OP-77 蟑螂恐惧症", file: "docs/worldview/phobia/OP-77.md"},
+                { id: "op-313", title: "OP-313 缩头水虱恐惧症", file: "docs/worldview/phobia/OP-313.md"},
+                { id: "op-1000", title: "OP-1000 蜈蚣恐惧症", file: "docs/worldview/phobia/OP-1000.md" }
             ],
 
             // 默认文档
@@ -869,23 +879,28 @@
                     "getting-started": "快速开始",
                      "faq": "常见问题"
                 },
+                "恐惧症": {
+                    "OP-0~1000": {
+                        "severe-phobia": "重恐症",
+                        "op-22": "OP-22 深海恐惧症",
+                        "op-23": "OP-23 瘟疫恐惧症",
+                        "op-77": "OP-77 蟑螂恐惧症",
+                        "op-313": "OP-313 缩头水虱恐惧症",
+                        "op-1000": "OP-1000 蜈蚣恐惧症"
+                    }
+
+                },
                 "故事": {
                     "2025.11.29": {
                         "永别了，战争": {
                             "章节": {
-                                "farewell-war-chapter1": "第一章：赫尔辛基的阴影",
-                                "farewell-war-chapter2": "第二章：空痕与回响", 
-                                "farewell-war-chapter3": "第三章：以太回响里的安魂曲",
-                                "farewell-war-chapter4": "第四章：雪原上的信标",
-                                "farewell-war-chapter5": "第五章：寂静的回声"
+                                "farewell-war-chapter": "开始阅读"
                             },
                             "角色分析": {
-                                "farewell-war-characters-main": "主要角色",
-                                "farewell-war-characters-side": "次要角色"
+                                "farewell-war-characters": "开始阅读"
                             },
                             "背景设定": {
-                                "farewell-war-setting-time": "时间线",
-                                "farewell-war-setting-location": "地点"
+                                "farewell-war-setting": "开始阅读"
                             }
                         },
                          "未命名故事": {
@@ -922,7 +937,7 @@
                         "sea-church-introduce": "深海教会"
                     },
                     "概念": {
-                        "phobia": "恐惧症"
+                        "phobia": "恐惧症",
                     }
                 },
                 "开发与社区": {
